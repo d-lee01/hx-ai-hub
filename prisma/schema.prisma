@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ── NextAuth tables ───────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ── Content ───────────────────────────────────────────
+
+enum Section {
+  NEWS
+  AT_HX
+  TOOLS
+}
+
+model Page {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  section      Section
+  title        String
+  body         String   @db.Text
+  sourceUrl    String?  @map("source_url")
+  capabilities String[] @default([])
+  logoUrl      String?  @map("logo_url")
+  accessUrl    String?  @map("access_url")
+  hxContact    String?  @map("hx_contact")
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([section, published])
+  @@map("pages")
+}
+
+// ── Bot API clients ───────────────────────────────────
+
+model ApiClient {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  apiKey      String   @unique @map("api_key")
+  permissions String[] @default([])
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("api_clients")
+}
