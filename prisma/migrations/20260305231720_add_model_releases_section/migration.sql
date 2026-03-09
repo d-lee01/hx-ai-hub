@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "Section" ADD VALUE 'MODEL_RELEASES';

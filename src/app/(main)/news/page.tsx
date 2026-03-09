@@ -25,6 +25,7 @@ export default async function NewsPage() {
                 title={page.title}
                 createdAt={page.createdAt}
                 body={page.body}
+                author={page.author}
               />
             </ScrollReveal>
           ))}

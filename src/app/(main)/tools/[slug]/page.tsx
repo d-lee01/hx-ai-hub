@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { CapabilityPill } from "@/components/ui/CapabilityPill";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { MarkdownProse } from "@/components/ui/MarkdownProse";
+import { AuthorByline } from "@/components/ui/AuthorByline";
 import Link from "next/link";
 
 export default async function ToolDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -47,6 +48,9 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ slu
             ))}
           </div>
         )}
+
+        {/* Author */}
+        {page.author && <AuthorByline author={page.author} />}
 
         {/* Body */}
         <MarkdownProse content={page.body} />

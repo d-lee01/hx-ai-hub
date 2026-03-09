@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 
 interface BadgeProps {
-  section: "NEWS" | "AT_HX" | "TOOLS";
+  section: "NEWS" | "AT_HX" | "TOOLS" | "MODEL_RELEASES";
   children: React.ReactNode;
 }
 
@@ -9,6 +9,7 @@ const badgeClasses = {
   NEWS: "badge-news",
   AT_HX: "badge-athx",
   TOOLS: "badge-tools",
+  MODEL_RELEASES: "badge-models",
 };
 
 export function Badge({ section, children }: BadgeProps) {

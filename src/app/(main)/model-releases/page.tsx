@@ -3,17 +3,17 @@ import { SectionCard } from "@/components/ui/SectionCard";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "AI at HX — HX AI Hub" };
+export const metadata = { title: "Model Releases — HX AI Hub" };
 
-export default async function AtHxPage() {
-  const pages = await getPagesBySection("AT_HX");
+export default async function ModelReleasesPage() {
+  const pages = await getPagesBySection("MODEL_RELEASES");
 
   return (
     <>
-      <h1 className="text-3xl font-bold gradient-text mb-6 animate-fade-in-up">AI at HX</h1>
+      <h1 className="text-3xl font-bold gradient-text mb-6 animate-fade-in-up">Model Releases</h1>
       {pages.length === 0 ? (
         <div className="glass-panel p-8 text-center text-text-secondary animate-fade-in-up stagger-1">
-          <p>No articles yet. Check back soon!</p>
+          <p>No model release articles yet. Check back soon!</p>
         </div>
       ) : (
         <div className="flex flex-col gap-4">

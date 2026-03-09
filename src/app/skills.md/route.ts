@@ -12,7 +12,7 @@ HX AI Hub is an internal knowledge hub for Holiday Extras employees. It covers A
 
 ## 2. Sections
 
-The hub has three content sections. Every page belongs to exactly one section.
+The hub has four content sections. Every page belongs to exactly one section.
 
 ### AI News (\`/news/\`)
 - Daily AI news from the wider world, auto-curated by the bot.
@@ -33,6 +33,12 @@ The hub has three content sections. Every page belongs to exactly one section.
 - **Required fields:** \`title\`, \`body\`, \`capabilities\` (at least one).
 - **Recommended fields:** \`accessUrl\`, \`logoUrl\`, \`hxContact\`.
 
+### Model Releases (\`/model-releases/\`)
+- News about new AI model launches and updates (e.g. GPT-4.5, Claude 4, Gemini 2.5).
+- **Voice:** Technically informed but accessible. Explain what the model does and why it matters.
+- **Tone:** Like a knowledgeable colleague summarising the release — highlight key capabilities, benchmarks, and what it means for HX.
+- **Required fields:** \`title\`, \`body\`, \`sourceUrl\` (when available).
+
 ---
 
 ## 3. API Authentication
@@ -44,6 +50,22 @@ Authorization: Bearer hxai_<your-api-key>
 \`\`\`
 
 The API key is provisioned once and grants \`pages:read\` and \`pages:write\` permissions. Keep it secret.
+
+### API Key Authors
+
+Each API key is associated with a default author. Every post **must** include an author byline.
+
+| Bot name | Default author | Key prefix |
+|---|---|---|
+| \`liam-thompson\` | Liam Thompson | \`hxai_65fab3...\` |
+
+### Author Attribution Rules
+
+1. **Every post must have an author.** No exceptions. Set the \`author\` JSON field when creating or updating a page.
+2. **Default:** Use the default author associated with your API key (see table above).
+3. **Custom author:** If the content was submitted by or attributed to a specific person (e.g. someone emailed the story in), use their name instead.
+4. **Format:** Send the author's full name (e.g. \`"Liam Thompson"\`) in the \`author\` field. Do NOT put a byline in the \`body\` markdown — the site renders the author automatically.
+5. **Never omit the author.** If you are unsure who the author is, use the default author for your API key.
 
 ---
 
@@ -60,7 +82,7 @@ GET /api/bot/pages
 Query parameters (all optional):
 | Param | Example | Description |
 |---|---|---|
-| \`section\` | \`NEWS\`, \`AT_HX\`, \`TOOLS\` | Filter by section |
+| \`section\` | \`NEWS\`, \`AT_HX\`, \`TOOLS\`, \`MODEL_RELEASES\` | Filter by section |
 | \`capability\` | \`Chat\` | Filter tools by capability tag |
 | \`published\` | \`true\` / \`false\` | Filter by publish state |
 
@@ -84,9 +106,10 @@ Body (JSON):
 \`\`\`json
 {
   "slug": "my-article-slug",
-  "section": "NEWS",
+  "section": "NEWS | AT_HX | TOOLS | MODEL_RELEASES",
   "title": "Article Title",
   "body": "Markdown content here...",
+  "author": "Liam Thompson",
   "sourceUrl": "https://source.example.com",
   "capabilities": ["Chat", "Code"],
   "logoUrl": "https://example.com/logo.png",
@@ -97,7 +120,7 @@ Body (JSON):
 \`\`\`
 
 Required: \`slug\`, \`section\`, \`title\`, \`body\`.
-Optional: \`sourceUrl\`, \`capabilities\`, \`logoUrl\`, \`accessUrl\`, \`hxContact\`, \`published\` (defaults to \`true\`).
+Optional: \`author\`, \`sourceUrl\`, \`capabilities\`, \`logoUrl\`, \`accessUrl\`, \`hxContact\`, \`published\` (defaults to \`true\`).
 
 Response: \`{ "page": {...} }\` with status 201.
 
@@ -152,6 +175,7 @@ Content-Type: application/json
 | \`NEWS\` | AI News | \`/news/\` |
 | \`AT_HX\` | AI at HX | \`/at-hx/\` |
 | \`TOOLS\` | HX AI Tools | \`/tools/\` |
+| \`MODEL_RELEASES\` | Model Releases | \`/model-releases/\` |
 
 ---
 

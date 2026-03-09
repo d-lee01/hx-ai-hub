@@ -19,6 +19,14 @@ export async function getAllPublishedPages() {
   });
 }
 
+export async function getUserImageByName(name: string) {
+  const user = await prisma.user.findFirst({
+    where: { name: { equals: name, mode: "insensitive" } },
+    select: { image: true },
+  });
+  return user?.image ?? null;
+}
+
 export async function getToolsByCapabilities(capabilities: string[]) {
   if (capabilities.length === 0) {
     return getPagesBySection("TOOLS");

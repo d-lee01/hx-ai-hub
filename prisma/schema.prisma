@@ -67,6 +67,7 @@ enum Section {
   NEWS
   AT_HX
   TOOLS
+  MODEL_RELEASES
 }
 
 model Page {
@@ -80,6 +81,7 @@ model Page {
   logoUrl      String?  @map("logo_url")
   accessUrl    String?  @map("access_url")
   hxContact    String?  @map("hx_contact")
+  author       String?  @map("author")
   published    Boolean  @default(true)
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt @map("updated_at")

@@ -3,6 +3,7 @@ import { getPageBySlug } from "@/lib/db/queries";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { MarkdownProse } from "@/components/ui/MarkdownProse";
+import { AuthorByline } from "@/components/ui/AuthorByline";
 import Link from "next/link";
 
 export default async function AtHxArticlePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -29,6 +30,7 @@ export default async function AtHxArticlePage({ params }: { params: Promise<{ sl
           </time>
         </div>
         <h1 className="text-3xl font-bold mb-6">{page.title}</h1>
+        {page.author && <AuthorByline author={page.author} />}
         <MarkdownProse content={page.body} />
       </GlassCard>
     </article>

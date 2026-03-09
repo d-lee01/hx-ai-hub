@@ -2,12 +2,14 @@ export const SECTIONS = {
   NEWS: { label: "AI News", slug: "news", color: "news" as const },
   AT_HX: { label: "AI at HX", slug: "at-hx", color: "athx" as const },
   TOOLS: { label: "HX AI Tools", slug: "tools", color: "tools" as const },
+  MODEL_RELEASES: { label: "Model Releases", slug: "model-releases", color: "models" as const },
 } as const;
 
 export const SECTION_BY_SLUG: Record<string, keyof typeof SECTIONS> = {
   news: "NEWS",
   "at-hx": "AT_HX",
   tools: "TOOLS",
+  "model-releases": "MODEL_RELEASES",
 };
 
 export const CAPABILITIES = [

@@ -10,6 +10,7 @@
   --section-news: #3B82F6;
   --section-athx: #14B8A6;
   --section-tools: #542E91;
+  --section-models: #F59E0B;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(84, 46, 145, 0.12);
   --glass-shadow: rgba(84, 46, 145, 0.08);
@@ -28,6 +29,7 @@
   --color-section-news: var(--section-news);
   --color-section-athx: var(--section-athx);
   --color-section-tools: var(--section-tools);
+  --color-section-models: var(--section-models);
   --color-glass-bg: var(--glass-bg);
   --color-glass-border: var(--glass-border);
   --color-glass-shadow: var(--glass-shadow);
@@ -190,11 +192,16 @@ body {
   background: rgba(84, 46, 145, 0.1);
   color: var(--section-tools);
 }
+.badge-models {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--section-models);
+}
 
 /* ── Section border colors ─────────────────────────────── */
 .border-section-news { border-color: var(--section-news); }
 .border-section-athx { border-color: var(--section-athx); }
 .border-section-tools { border-color: var(--section-tools); }
+.border-section-models { border-color: var(--section-models); }
 
 /* ── Prose styling ─────────────────────────────────────── */
 .prose-hx {

@@ -9,15 +9,17 @@ interface SectionCardProps {
   title: string;
   createdAt: Date;
   body: string;
+  author?: string | null;
 }
 
 const borderClasses: Record<Section, string> = {
   NEWS: "border-section-news",
   AT_HX: "border-section-athx",
   TOOLS: "border-section-tools",
+  MODEL_RELEASES: "border-section-models",
 };
 
-export function SectionCard({ slug, section, title, createdAt, body }: SectionCardProps) {
+export function SectionCard({ slug, section, title, createdAt, body, author }: SectionCardProps) {
   const sectionMeta = SECTIONS[section];
   const href = `/${sectionMeta.slug}/${slug}`;
   const excerpt = body.replace(/[#*_`>\[\]]/g, "").slice(0, 160) + (body.length > 160 ? "..." : "");
@@ -37,6 +39,9 @@ export function SectionCard({ slug, section, title, createdAt, body }: SectionCa
           {title}
         </h3>
         <p className="text-sm text-text-secondary line-clamp-2">{excerpt}</p>
+        {author && (
+          <p className="text-xs text-text-tertiary mt-2">By {author}</p>
+        )}
       </article>
     </Link>
   );

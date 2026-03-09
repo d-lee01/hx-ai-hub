@@ -198,6 +198,8 @@ const btnVariants: Record<string, string> = {
 function TabBlock({ tabs }: { tabs: { title: string; content: string }[] }) {
   const [active, setActive] = useState(0);
 
+  if (tabs.length === 0) return null;
+
   return (
     <div className="ext-tabs">
       <div className="ext-tabs__bar" role="tablist">

@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
   const published = url.searchParams.get("published");
 
   const where: Record<string, unknown> = {};
-  if (section && ["NEWS", "AT_HX", "TOOLS"].includes(section)) {
+  if (section && ["NEWS", "AT_HX", "TOOLS", "MODEL_RELEASES"].includes(section)) {
     where.section = section;
   }
   if (capability) {
