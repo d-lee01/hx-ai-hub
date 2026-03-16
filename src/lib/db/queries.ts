@@ -27,6 +27,20 @@ export async function getUserImageByName(name: string) {
   return user?.image ?? null;
 }
 
+export async function getUserImagesByNames(names: string[]): Promise<Record<string, string>> {
+  const unique = [...new Set(names.filter(Boolean))];
+  if (unique.length === 0) return {};
+  const users = await prisma.user.findMany({
+    where: { name: { in: unique, mode: "insensitive" } },
+    select: { name: true, image: true },
+  });
+  const map: Record<string, string> = {};
+  for (const u of users) {
+    if (u.name && u.image) map[u.name.toLowerCase()] = u.image;
+  }
+  return map;
+}
+
 export async function getToolsByCapabilities(capabilities: string[]) {
   if (capabilities.length === 0) {
     return getPagesBySection("TOOLS");

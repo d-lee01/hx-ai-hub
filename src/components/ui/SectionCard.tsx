@@ -10,6 +10,7 @@ interface SectionCardProps {
   createdAt: Date;
   body: string;
   author?: string | null;
+  authorImage?: string | null;
 }
 
 const borderClasses: Record<Section, string> = {
@@ -19,7 +20,22 @@ const borderClasses: Record<Section, string> = {
   MODEL_RELEASES: "border-section-models",
 };
 
-export function SectionCard({ slug, section, title, createdAt, body, author }: SectionCardProps) {
+const INITIAL_COLORS = [
+  "bg-hx-purple",
+  "bg-blue-600",
+  "bg-emerald-600",
+  "bg-amber-600",
+  "bg-rose-600",
+  "bg-cyan-600",
+];
+
+function getColorForName(name: string) {
+  let hash = 0;
+  for (const ch of name) hash = ch.charCodeAt(0) + ((hash << 5) - hash);
+  return INITIAL_COLORS[Math.abs(hash) % INITIAL_COLORS.length];
+}
+
+export function SectionCard({ slug, section, title, createdAt, body, author, authorImage }: SectionCardProps) {
   const sectionMeta = SECTIONS[section];
   const href = `/${sectionMeta.slug}/${slug}`;
   const excerpt = body.replace(/[#*_`>\[\]]/g, "").slice(0, 160) + (body.length > 160 ? "..." : "");
@@ -40,7 +56,23 @@ export function SectionCard({ slug, section, title, createdAt, body, author }: S
         </h3>
         <p className="text-sm text-text-secondary line-clamp-2">{excerpt}</p>
         {author && (
-          <p className="text-xs text-text-tertiary mt-2">By {author}</p>
+          <div className="flex items-center gap-2 mt-3">
+            {authorImage ? (
+              <img
+                src={authorImage}
+                alt={author}
+                className="w-5 h-5 rounded-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div
+                className={`w-5 h-5 rounded-full flex items-center justify-center text-white text-[10px] font-semibold ${getColorForName(author)}`}
+              >
+                {author[0].toUpperCase()}
+              </div>
+            )}
+            <span className="text-xs text-text-tertiary">{author}</span>
+          </div>
         )}
       </article>
     </Link>

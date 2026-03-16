@@ -1,4 +1,4 @@
-import { getPagesBySection } from "@/lib/db/queries";
+import { getPagesBySection, getUserImagesByNames } from "@/lib/db/queries";
 import { SectionCard } from "@/components/ui/SectionCard";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
@@ -7,6 +7,7 @@ export const metadata = { title: "Model Releases — HX AI Hub" };
 
 export default async function ModelReleasesPage() {
   const pages = await getPagesBySection("MODEL_RELEASES");
+  const authorImages = await getUserImagesByNames(pages.map((p) => p.author).filter(Boolean) as string[]);
 
   return (
     <>
@@ -26,6 +27,7 @@ export default async function ModelReleasesPage() {
                 createdAt={page.createdAt}
                 body={page.body}
                 author={page.author}
+                authorImage={page.author ? authorImages[page.author.toLowerCase()] ?? null : null}
               />
             </ScrollReveal>
           ))}
