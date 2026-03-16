@@ -1,103 +1,99 @@
 # HX AI Hub
 
-Internal AI knowledge hub for Holiday Extras — covering AI news, internal initiatives, model releases, and an AI tooling directory.
+This is the codebase for the HX AI Hub website — an internal Holiday Extras site that shows AI news, tools, and stories.
 
-**Live site:** https://hxaipage.vercel.app
-
----
-
-## How it works
-
-- **Content** is created and managed by bot agents via a REST API — you don't edit content in this repo
-- **Layout, styling, and components** are in this repo — edit files here, push to `main`, and the live site updates automatically via Vercel
-- **Employees** access the site by signing in with their `@holidayextras.com` Google account
+**The live site:** https://hxaipage.vercel.app
 
 ---
 
-## Making changes
+## Who is this repo for?
 
-This repo is connected to Vercel. Every push to `main` automatically deploys to the live site within ~60 seconds.
+You're here to make changes to how the site looks — things like colours, layout, fonts, the navigation bar, how article cards appear, etc.
 
-```
-Edit files → Commit → Push to main → Live site updates
-```
-
-You do not need to run the site locally. You do not need a Vercel account. Just push to this repo.
-
-For details on which files control what, see [`CLAUDE.md`](./CLAUDE.md) — this is also read automatically by Claude Code for AI-assisted development.
+You **don't** need to worry about:
+- The articles and content (that's managed by a bot, not this code)
+- The database or API (that's managed by the project owner)
+- Logging in, accounts, or authentication (that's already set up)
 
 ---
 
-## Quick reference — what to edit
+## How to make changes
 
-| I want to change... | Edit this file |
+You don't need to install anything or run the site on your computer. Use Claude Code to make edits, then push to GitHub. The site updates automatically.
+
+### The process
+
+1. Open this repo in Claude Code
+2. Describe what you want to change (e.g. "make the header background darker" or "add more spacing between the article cards")
+3. Claude Code will edit the right files for you
+4. Commit and push to `main`
+5. Wait about 60 seconds
+6. Check the live site at https://hxaipage.vercel.app to see your changes
+
+That's it. Every push to `main` automatically updates the live site.
+
+---
+
+## What can I change?
+
+Anything visual — colours, fonts, spacing, layout, wording on buttons, how cards look, the navigation, the footer, the sign-in page, animations, etc.
+
+Claude Code knows which files control what (it reads the `CLAUDE.md` file in this repo automatically). Just describe what you want in plain English.
+
+### Examples of things you can ask for
+
+- "Change the purple brand colour to blue"
+- "Make the article cards have more padding"
+- "Add a subtitle under the page heading"
+- "Make the navigation bar sticky so it stays at the top when you scroll"
+- "Change the font to Inter"
+- "Make the footer say 'Powered by HX AI' instead of what it says now"
+- "Redesign the sign-in page"
+
+---
+
+## What should I NOT change?
+
+Some parts of this codebase control the database, the API that bots use to post content, and the login system. **These are off-limits** — Claude Code already knows this and will tell you if you ask for something that crosses the line.
+
+If you need a change that involves the database, API, or bot configuration, contact the project owner: **David Lee**.
+
+---
+
+## Quick reference
+
+| I want to change... | Where it lives |
 |---------------------|----------------|
-| Colours, fonts, visual effects | `src/app/globals.css` |
+| Colours and visual theme | `src/app/globals.css` |
 | Navigation bar | `src/components/layout/TopNav.tsx` |
 | Footer | `src/components/layout/Footer.tsx` |
-| Page wrapper / layout | `src/components/layout/PageShell.tsx` |
 | Article cards on list pages | `src/components/ui/SectionCard.tsx` |
-| Tool cards on the tools page | `src/components/ui/ToolCard.tsx` |
-| Individual article layout | `src/app/(main)/<section>/[slug]/page.tsx` |
-| How markdown content renders | `src/components/ui/MarkdownProse.tsx` |
-| Author byline appearance | `src/components/ui/AuthorByline.tsx` |
+| Tool cards | `src/components/ui/ToolCard.tsx` |
+| Full article page layout | `src/app/(main)/[section]/[slug]/page.tsx` |
+| How article content renders | `src/components/ui/MarkdownProse.tsx` |
+| Author name and photo | `src/components/ui/AuthorByline.tsx` |
 | Sign-in page | `src/app/(auth)/auth/signin/page.tsx` |
+| Page title and metadata | `src/app/layout.tsx` |
 
-See [`CLAUDE.md`](./CLAUDE.md) for the full file map.
-
----
-
-## Tech stack
-
-| Layer | Technology |
-|-------|-----------|
-| Framework | Next.js 16 (App Router) + React 19 |
-| Styling | Tailwind CSS v4 |
-| Database | PostgreSQL (Neon) via Prisma ORM |
-| Auth | NextAuth.js v5 + Google OAuth |
-| Hosting | Vercel (auto-deploys from `main`) |
+You don't need to memorise this — Claude Code will find the right file for you.
 
 ---
 
-## Project structure
+## The site has four sections
 
-```
-src/
-  app/
-    globals.css              # Theme — all colours, fonts, effects
-    (auth)/                  # Sign-in and error pages
-    (main)/                  # Content pages (news, at-hx, tools, model-releases)
-    api/                     # Bot REST API (managed by project owner)
-  components/
-    layout/                  # TopNav, Footer, PageShell, MobileMenu
-    sections/                # ToolGrid (filterable tool directory)
-    ui/                      # Reusable components (cards, badges, buttons, etc.)
-  lib/                       # Database, auth, API internals (managed by project owner)
-prisma/                      # Database schema (managed by project owner)
-prompts/                     # Bot agent prompts (managed by project owner)
-```
+| Section | What it shows |
+|---------|---------------|
+| AI News | AI industry news from around the world |
+| AI at HX | Stories about what HX teams are doing with AI |
+| AI Tools | A directory of AI tools available to staff |
+| Model Releases | Coverage of new AI model launches |
+
+Content for these sections is posted by a bot agent — you don't manage content through this repo.
 
 ---
 
-## Content management
+## Need help?
 
-Content (articles, tool pages) is **not** managed through this repo. It is managed by bot agents via the REST API at `/api/bot/pages`. Employees can submit content by speaking to the content bot — no code changes needed.
-
-API documentation: https://hxaipage.vercel.app/skills.md
-
----
-
-## Local development (optional)
-
-Most changes can be made by editing files and pushing. If you need to run locally:
-
-1. Install Node.js 18+ and PostgreSQL
-2. `cp .env.example .env.local` and fill in credentials (ask the project owner)
-3. `npm install && npx prisma migrate dev`
-4. `npm run dev` → http://localhost:3000
-
----
-
-## Contact
-
-Project owner: David Lee — manages the database, Vercel hosting, bot agents, and API.
+- **Layout and design changes:** Ask Claude Code — it knows the project
+- **Content changes:** Speak to the content bot (everyone at HX has access)
+- **Database, API, or hosting issues:** Contact David Lee
