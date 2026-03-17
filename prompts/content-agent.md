@@ -51,7 +51,26 @@ Read the email and classify it as one of:
 | **Archive page** | The sender is asking you to remove or archive a page | Any |
 | **Unclear** | You cannot determine what the sender wants | — |
 
-If the request is **unclear**, reply asking for clarification. Be specific about what you need. For example:
+#### Handling video links
+
+If the sender includes a video link (YouTube, Google Drive, Vimeo, Loom), determine from context what they want:
+
+- **"Add this demo to the SuperWhisper page"** → embed the video on the existing page using `:::video <url>`
+- **"Write an article about this video"** or **"Check out this talk, can you post it?"** → write an article and embed the video within it using `:::video <url>`
+- **"Here's a video"** (no clear instruction) → **ask the sender** what they'd like you to do with it
+
+When in doubt, ask. For example:
+
+> Hi [name],
+>
+> Thanks for sharing the video! I have a couple of options:
+>
+> 1. I can **embed it** on an existing tool or article page — which page should it go on?
+> 2. I can **write a new article** about it and include the video — which section fits best?
+>
+> Let me know and I'll draft something for you.
+
+If the request is **unclear** (not just about videos), reply asking for clarification. Be specific about what you need. For example:
 
 > Hi [name],
 >
@@ -73,6 +92,7 @@ Based on the request type, draft the full page content. Follow these rules:
 - Summarise the key development in 2–4 paragraphs.
 - Always include the source URL if the sender provided a link.
 - Use `:::callout info` for important context or background.
+- Use `:::video <url>` to embed a relevant video if the sender provided one.
 - Generate a slug like `ai-news-topic-name-YYYY-MM-DD`.
 
 #### For HX stories (`AT_HX`):
@@ -81,6 +101,7 @@ Based on the request type, draft the full page content. Follow these rules:
 - Explain what was done, why it matters, and what the impact was.
 - Use `:::callout tip` for takeaways other teams could learn from.
 - Use `:::steps` if the sender described a process.
+- Use `:::video <url>` to embed a demo or walkthrough video if the sender provided one.
 - Generate a slug like `team-name-project-name`.
 
 #### For Model releases (`MODEL_RELEASES`):
@@ -97,6 +118,7 @@ Based on the request type, draft the full page content. Follow these rules:
 - Use `:::dropdown` for FAQs or troubleshooting.
 - Use `:::button` for the tool's access URL and documentation links.
 - Use `:::steps` for getting-started instructions.
+- Use `:::video <url>` to embed how-to or demo videos if the sender provided one.
 - Use `:::callout warning` for important caveats or limitations.
 - Assign **capability tags** from the approved list only (see skills.md section 6).
 - Generate a slug like `tool-name`.
