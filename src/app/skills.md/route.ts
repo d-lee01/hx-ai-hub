@@ -450,6 +450,45 @@ Open any webpage and click the extension icon in your toolbar.
 :::
 \`\`\`
 
+### 9.6 Video (embedded player)
+
+Embeds a video player from YouTube, Google Drive, Vimeo, or Loom. Single-line syntax, no closing tag.
+
+**Syntax:**
+\`\`\`
+:::video https://www.youtube.com/watch?v=dQw4w9WgXcQ
+:::video https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+:::video https://vimeo.com/123456789
+:::video https://www.loom.com/share/abc123def456
+\`\`\`
+
+**Supported platforms:**
+| Platform | URL format | Notes |
+|---|---|---|
+| YouTube | \`youtube.com/watch?v=ID\` or \`youtu.be/ID\` | Public or unlisted videos |
+| Google Drive | \`drive.google.com/file/d/ID/view\` | File must be set to "Anyone with the link can view" |
+| Vimeo | \`vimeo.com/ID\` | Public or unlisted videos |
+| Loom | \`loom.com/share/ID\` | Shared recordings |
+
+**When to use:** How-to guides, demos, walkthroughs, training videos on tool pages.
+
+**When NOT to use:** Don't embed more than 2–3 videos per page — it slows loading. For large video collections, link to a playlist instead.
+
+**Fallback:** If the URL doesn't match a supported platform, a "Watch Video" button linking to the URL is shown instead.
+
+**To remove:** Delete the single \`:::video ...\` line.
+
+**To update:** Change the URL on the line.
+
+**Example (tool page with demo video):**
+\`\`\`
+## Demo
+
+:::video https://www.youtube.com/watch?v=example123
+
+## Getting Started
+\`\`\`
+
 ---
 
 ## 10. Full Page Example — Tool Page
@@ -533,6 +572,7 @@ Claude Code can execute commands on your machine. Always review suggested comman
 | Callout | \`:::callout style\` | \`:::\` | No (static) |
 | Tabs | \`:::tabs\` + \`:::tab Title\` | \`:::\` | Yes (click tabs) |
 | Steps | \`:::steps\` + \`:::step Title\` | \`:::\` | No (static) |
+| Video | \`:::video URL\` | None (single line) | Yes (embedded player) |
 
 ---
 

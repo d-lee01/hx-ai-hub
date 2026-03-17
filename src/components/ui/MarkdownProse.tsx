@@ -10,7 +10,8 @@ type Segment =
   | { type: "button"; label: string; url: string; variant: string }
   | { type: "callout"; style: string; content: string }
   | { type: "tabs"; tabs: { title: string; content: string }[] }
-  | { type: "steps"; steps: { title: string; content: string }[] };
+  | { type: "steps"; steps: { title: string; content: string }[] }
+  | { type: "video"; url: string };
 
 // ── Block parser ──────────────────────────────────────
 
@@ -28,6 +29,15 @@ function parseSegments(md: string): Segment[] {
 
   while (i < lines.length) {
     const line = lines[i];
+
+    // ── Video (single-line) ──
+    const vidMatch = line.match(/^:::video\s+(\S+)\s*$/);
+    if (vidMatch) {
+      flush();
+      segments.push({ type: "video", url: vidMatch[1].trim() });
+      i++;
+      continue;
+    }
 
     // ── Button (single-line) ──
     const btnMatch = line.match(
@@ -193,6 +203,30 @@ const btnVariants: Record<string, string> = {
     "ext-btn ext-btn--ghost",
 };
 
+// ── Video embed helper ───────────────────────────────
+
+function getEmbedUrl(url: string): { src: string; fallback: false } | { src: null; fallback: true } {
+  // YouTube: youtube.com/watch?v=ID, youtu.be/ID, youtube.com/embed/ID
+  const ytMatch = url.match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+  );
+  if (ytMatch) return { src: `https://www.youtube.com/embed/${ytMatch[1]}`, fallback: false };
+
+  // Google Drive: drive.google.com/file/d/FILE_ID/...
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch) return { src: `https://drive.google.com/file/d/${driveMatch[1]}/preview`, fallback: false };
+
+  // Vimeo: vimeo.com/ID
+  const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch) return { src: `https://player.vimeo.com/video/${vimeoMatch[1]}`, fallback: false };
+
+  // Loom: loom.com/share/ID
+  const loomMatch = url.match(/loom\.com\/share\/([a-zA-Z0-9]+)/);
+  if (loomMatch) return { src: `https://www.loom.com/embed/${loomMatch[1]}`, fallback: false };
+
+  return { src: null, fallback: true };
+}
+
 // ── Tabs component ────────────────────────────────────
 
 function TabBlock({ tabs }: { tabs: { title: string; content: string }[] }) {
@@ -274,6 +308,34 @@ export function MarkdownProse({ content }: MarkdownProseProps) {
                 </div>
               </div>
             );
+
+          case "video": {
+            const embed = getEmbedUrl(seg.url);
+            if (embed.fallback) {
+              return (
+                <a
+                  key={idx}
+                  href={seg.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ext-btn ext-btn--purple"
+                >
+                  Watch Video &rarr;
+                </a>
+              );
+            }
+            return (
+              <div key={idx} className="ext-video">
+                <iframe
+                  src={embed.src}
+                  className="ext-video__iframe"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            );
+          }
 
           case "tabs":
             return <TabBlock key={idx} tabs={seg.tabs} />;
