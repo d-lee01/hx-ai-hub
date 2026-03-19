@@ -1,7 +1,7 @@
 export const SECTIONS = {
-  NEWS: { label: "AI News", slug: "news", color: "news" as const },
   AT_HX: { label: "AI at HX", slug: "at-hx", color: "athx" as const },
   TOOLS: { label: "HX AI Tools", slug: "tools", color: "tools" as const },
+  NEWS: { label: "AI News", slug: "news", color: "news" as const },
   MODEL_RELEASES: { label: "Model Releases", slug: "model-releases", color: "models" as const },
 } as const;
 
