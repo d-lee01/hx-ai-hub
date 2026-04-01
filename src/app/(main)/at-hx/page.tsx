@@ -50,6 +50,20 @@ export default async function AtHxPage({ searchParams }: { searchParams: Promise
   return (
     <>
       <h1 className="text-3xl font-bold gradient-text-athx mb-6 animate-fade-in-up">AI at HX</h1>
+      {/* Contribution CTA */}
+      <div className="glass-panel p-5 mb-6 border-l-4 border-section-athx animate-fade-in-up stagger-1">
+        <p className="text-sm text-text-secondary">
+          Got something to share? Send your thoughts to{" "}
+          <a
+            href="mailto:hxaipage@gmail.com"
+            className="text-hx-purple hover:text-hx-purple-light underline transition-colors"
+          >
+            hxaipage@gmail.com
+          </a>{" "}
+          — AI will help you write and publish it.
+        </p>
+      </div>
+
       <Suspense>
         <ThemeFilter />
       </Suspense>
