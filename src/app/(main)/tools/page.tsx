@@ -17,7 +17,7 @@ async function ToolsContent({ searchParams }: { searchParams: Promise<{ cap?: st
 export default async function ToolsPage({ searchParams }: { searchParams: Promise<{ cap?: string }> }) {
   return (
     <>
-      <h1 className="text-3xl font-bold gradient-text mb-6 animate-fade-in-up">HX AI Tools</h1>
+      <h1 className="text-3xl font-bold gradient-text-tools mb-6 animate-fade-in-up">HX AI Tools</h1>
       <Suspense>
         <CapabilityFilter />
       </Suspense>

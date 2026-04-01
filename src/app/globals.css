@@ -8,8 +8,8 @@
   --hx-purple-light: #7B52C1;
   --hx-purple-dark: #3D1F6D;
   --section-news: #3B82F6;
-  --section-athx: #14B8A6;
-  --section-tools: #542E91;
+  --section-athx: #542E91;
+  --section-tools: #10B981;
   --section-models: #F59E0B;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(84, 46, 145, 0.12);
@@ -81,7 +81,13 @@ body {
   background-clip: text;
 }
 .gradient-text-athx {
-  background: linear-gradient(135deg, #0f766e, var(--section-athx));
+  background: linear-gradient(135deg, var(--hx-purple-dark), var(--section-athx));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-tools {
+  background: linear-gradient(135deg, #065f46, var(--section-tools));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -205,11 +211,11 @@ body {
   color: var(--section-news);
 }
 .badge-athx {
-  background: rgba(20, 184, 166, 0.1);
+  background: rgba(84, 46, 145, 0.1);
   color: var(--section-athx);
 }
 .badge-tools {
-  background: rgba(84, 46, 145, 0.1);
+  background: rgba(16, 185, 129, 0.1);
   color: var(--section-tools);
 }
 .badge-models {
