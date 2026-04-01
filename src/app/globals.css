@@ -73,6 +73,26 @@ body {
   background-clip: text;
 }
 
+/* Section-specific gradient headings */
+.gradient-text-news {
+  background: linear-gradient(135deg, #1e40af, var(--section-news));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-athx {
+  background: linear-gradient(135deg, #0f766e, var(--section-athx));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-models {
+  background: linear-gradient(135deg, #b45309, var(--section-models));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ── Shimmer border ────────────────────────────────────── */
 .shimmer-border {
   position: relative;

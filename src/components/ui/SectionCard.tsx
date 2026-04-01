@@ -55,7 +55,7 @@ export function SectionCard({ slug, section, title, createdAt, body, author, aut
           {title}
         </h3>
         <p className="text-sm text-text-secondary line-clamp-2">{excerpt}</p>
-        {author && (
+        {author && section !== "TOOLS" && (
           <div className="flex items-center gap-2 mt-3">
             {authorImage ? (
               <img

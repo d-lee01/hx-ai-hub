@@ -49,9 +49,6 @@ export default async function ToolDetailPage({ params }: { params: Promise<{ slu
           </div>
         )}
 
-        {/* Author */}
-        {page.author && <AuthorByline author={page.author} />}
-
         {/* Body */}
         <MarkdownProse content={page.body} />
 

@@ -12,6 +12,18 @@ export const SECTION_BY_SLUG: Record<string, keyof typeof SECTIONS> = {
   "model-releases": "MODEL_RELEASES",
 };
 
+export const AT_HX_THEMES = [
+  "Tools",
+  "Mindset",
+  "Process",
+  "Experimentation",
+  "Leadership",
+  "Learning",
+  "Productivity",
+] as const;
+
+export type AtHxTheme = (typeof AT_HX_THEMES)[number];
+
 export const CAPABILITIES = [
   "Chat",
   "Image Generation",

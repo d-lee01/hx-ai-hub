@@ -11,9 +11,24 @@ export default async function NewsPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold gradient-text mb-6 animate-fade-in-up">AI News</h1>
+      <h1 className="text-3xl font-bold gradient-text-news mb-4 animate-fade-in-up">AI News</h1>
+
+      {/* Contribution CTA */}
+      <div className="glass-panel p-5 mb-6 border-l-4 border-section-news animate-fade-in-up stagger-1">
+        <p className="text-sm text-text-secondary">
+          Got something to share? Send your thoughts to{" "}
+          <a
+            href="mailto:hxaipage@gmail.com"
+            className="text-hx-purple hover:text-hx-purple-light underline transition-colors"
+          >
+            hxaipage@gmail.com
+          </a>{" "}
+          — AI will help you write and publish it.
+        </p>
+      </div>
+
       {pages.length === 0 ? (
-        <div className="glass-panel p-8 text-center text-text-secondary animate-fade-in-up stagger-1">
+        <div className="glass-panel p-8 text-center text-text-secondary animate-fade-in-up stagger-2">
           <p>No news articles yet. Check back soon!</p>
         </div>
       ) : (

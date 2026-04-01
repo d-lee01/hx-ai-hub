@@ -11,7 +11,7 @@ export default async function ModelReleasesPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold gradient-text mb-6 animate-fade-in-up">Model Releases</h1>
+      <h1 className="text-3xl font-bold gradient-text-models mb-6 animate-fade-in-up">Model Releases</h1>
       {pages.length === 0 ? (
         <div className="glass-panel p-8 text-center text-text-secondary animate-fade-in-up stagger-1">
           <p>No model release articles yet. Check back soon!</p>
