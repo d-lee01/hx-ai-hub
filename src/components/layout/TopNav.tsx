@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
@@ -21,8 +22,8 @@ export function TopNav() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 nav-blur" role="navigation">
         <div className="max-w-6xl mx-auto flex items-center justify-between h-16 px-4">
-          <Link href="/" className="font-bold text-lg gradient-text shrink-0">
-            HX AI Hub
+          <Link href="/" className="shrink-0">
+            <Image src="/hassle-away-hero2.png" alt="HX AI Hub" width={160} height={107} className="h-10 w-auto" />
           </Link>
 
           {/* Desktop nav */}
