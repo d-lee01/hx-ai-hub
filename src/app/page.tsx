@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TopNav } from "@/components/layout/TopNav";
-import { Footer } from "@/components/layout/Footer";
 import { SECTIONS } from "@/lib/constants";
 
 const sectionMeta: Record<string, { num: string; desc: string; footerLabel: string; textColor: string; borderColor: string; badgeBg: string; glowColor: string }> = {
@@ -142,7 +141,6 @@ export default function Home() {
         </Link>
       </div>
 
-      <Footer />
     </div>
   );
 }
