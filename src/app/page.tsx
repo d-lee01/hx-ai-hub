@@ -28,7 +28,7 @@ export default function Home() {
       <TopNav />
 
       {/* Hero image */}
-      <div className="relative z-10 pt-16">
+      <div className="relative z-10 pt-20">
         <Image
           src="/hassle-away-hero.png"
           alt="HX AI Hub"
