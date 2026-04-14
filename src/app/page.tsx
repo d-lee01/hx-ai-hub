@@ -61,7 +61,7 @@ export default function Home() {
           <span style={{ color: "#A78BFA" }}>More AI.</span>
         </h1>
         <p className="text-lg font-semibold max-w-lg mx-auto" style={{ color: "rgba(240,238,255,0.45)" }}>
-          Remove the friction. Turn ideas into reality faster. Your guide to AI at Holiday Extras.
+          Remove the friction. Turn ideas into reality faster. Your one-stop-shop for AI at Holiday Extras.
         </p>
       </div>
 
