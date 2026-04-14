@@ -49,13 +49,10 @@ async function AtHxContent({ searchParams }: { searchParams: Promise<{ theme?: s
 export default async function AtHxPage({ searchParams }: { searchParams: Promise<{ theme?: string }> }) {
   return (
     <>
-      <div className="mb-6 animate-fade-in-up">
-        <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border inline-block mb-3"
-          style={{ background: "rgba(139,92,246,0.12)", color: "#C4B5FD", borderColor: "rgba(139,92,246,0.25)" }}>
-          AI at HX
-        </span>
-        <h1 className="text-4xl font-black text-white leading-tight tracking-tight">AI at HX</h1>
-      </div>
+      <h1 className="text-4xl font-black uppercase tracking-widest px-4 py-2 rounded inline-block mb-6 animate-fade-in-up"
+        style={{ background: "rgba(139,92,246,0.12)", color: "#C4B5FD", border: "1px solid rgba(139,92,246,0.25)" }}>
+        AI at HX
+      </h1>
       {/* Contribution CTA */}
       <div className="glass-panel p-5 mb-6 border-l-4 border-section-athx animate-fade-in-up stagger-1">
         <p className="text-sm text-text-secondary">

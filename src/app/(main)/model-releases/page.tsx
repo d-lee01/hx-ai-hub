@@ -11,13 +11,10 @@ export default async function ModelReleasesPage() {
 
   return (
     <>
-      <div className="mb-6 animate-fade-in-up">
-        <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border inline-block mb-3"
-          style={{ background: "rgba(245,158,11,0.12)", color: "#FDE68A", borderColor: "rgba(245,158,11,0.25)" }}>
-          Model Releases
-        </span>
-        <h1 className="text-4xl font-black text-white leading-tight tracking-tight">Model Releases</h1>
-      </div>
+      <h1 className="text-4xl font-black uppercase tracking-widest px-4 py-2 rounded inline-block mb-6 animate-fade-in-up"
+        style={{ background: "rgba(245,158,11,0.12)", color: "#FDE68A", border: "1px solid rgba(245,158,11,0.25)" }}>
+        Model Releases
+      </h1>
       {pages.length === 0 ? (
         <div className="glass-panel p-8 text-center text-text-secondary animate-fade-in-up stagger-1">
           <p>No model release articles yet. Check back soon!</p>

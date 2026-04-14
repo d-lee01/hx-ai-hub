@@ -17,13 +17,10 @@ async function ToolsContent({ searchParams }: { searchParams: Promise<{ cap?: st
 export default async function ToolsPage({ searchParams }: { searchParams: Promise<{ cap?: string }> }) {
   return (
     <>
-      <div className="mb-6 animate-fade-in-up">
-        <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border inline-block mb-3"
-          style={{ background: "rgba(16,185,129,0.12)", color: "#6EE7B7", borderColor: "rgba(16,185,129,0.25)" }}>
-          HX AI Tools
-        </span>
-        <h1 className="text-4xl font-black text-white leading-tight tracking-tight">HX AI Tools</h1>
-      </div>
+      <h1 className="text-4xl font-black uppercase tracking-widest px-4 py-2 rounded inline-block mb-6 animate-fade-in-up"
+        style={{ background: "rgba(16,185,129,0.12)", color: "#6EE7B7", border: "1px solid rgba(16,185,129,0.25)" }}>
+        HX AI Tools
+      </h1>
       <Suspense>
         <CapabilityFilter />
       </Suspense>
