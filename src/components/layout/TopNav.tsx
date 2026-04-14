@@ -23,9 +23,9 @@ export function TopNav() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 nav-blur" role="navigation">
-        <div className="max-w-6xl mx-auto flex items-center justify-between h-20 px-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-between h-28 px-4">
           <Link href="/" className="shrink-0">
-            <Image src="/hx-ai-logo.png" alt="HX AI Hub" width={480} height={120} className="h-16 w-auto" />
+            <Image src="/hx-ai-logo.png" alt="HX AI Hub" width={640} height={160} className="h-28 w-auto" />
           </Link>
 
           {/* Desktop nav */}
