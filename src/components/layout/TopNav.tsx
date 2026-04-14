@@ -8,10 +8,13 @@ import { useState } from "react";
 import { SECTIONS } from "@/lib/constants";
 import { MobileMenu } from "./MobileMenu";
 
-const navLinks = Object.values(SECTIONS).map((s) => ({
-  label: s.label,
-  href: `/${s.slug}`,
-}));
+const navLinks = [
+  { label: "Prompt Excellence", href: "/training" },
+  ...Object.values(SECTIONS).map((s) => ({
+    label: s.label,
+    href: `/${s.slug}`,
+  })),
+];
 
 export function TopNav() {
   const pathname = usePathname();
