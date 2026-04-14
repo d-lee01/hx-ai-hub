@@ -63,7 +63,7 @@ export default function TrainingPage() {
           <span style={{ color: "#A78BFA" }}>Excellence.</span>
         </h1>
         <p className="text-lg font-semibold max-w-lg mx-auto" style={{ color: "rgba(240,238,255,0.45)" }}>
-          Learn to get the best out of AI — two levels, real skills, built for HXers.
+          Getting the best out of AI starts with how you prompt it. Two levels, real skills, built for HXers.
         </p>
       </div>
 
