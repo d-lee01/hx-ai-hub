@@ -8,12 +8,11 @@ import { useState } from "react";
 import { SECTIONS } from "@/lib/constants";
 import { MobileMenu } from "./MobileMenu";
 
+const sectionLinks = Object.values(SECTIONS).map((s) => ({ label: s.label, href: `/${s.slug}` }));
 const navLinks = [
+  ...sectionLinks.slice(0, 3),
   { label: "Prompt Excellence", href: "/training" },
-  ...Object.values(SECTIONS).map((s) => ({
-    label: s.label,
-    href: `/${s.slug}`,
-  })),
+  ...sectionLinks.slice(3),
 ];
 
 export function TopNav() {

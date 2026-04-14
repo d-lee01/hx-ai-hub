@@ -108,6 +108,38 @@ export default function Home() {
             );
           })}
         </div>
+
+        {/* Prompt Excellence tile */}
+        <Link
+          href="/training"
+          className="group relative flex items-center gap-5 rounded-xl p-6 border border-cyan-500/25 mt-5 transition-all duration-200 hover:-translate-y-1 overflow-hidden"
+          style={{ background: "rgba(255,255,255,0.02)" }}
+        >
+          <div className="absolute top-0 left-[10%] right-[10%] h-px opacity-0 group-hover:opacity-100 transition-opacity"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(6,182,212,0.6), transparent)" }} />
+
+          {/* Prompty icon */}
+          <div className="shrink-0 w-16 h-16 rounded-xl flex items-center justify-center overflow-hidden"
+            style={{ background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.2)" }}>
+            <img src="/promty.png" alt="Prompty" className="w-14 h-14 object-contain" style={{ mixBlendMode: "screen" }} />
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-3 mb-1">
+              <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border text-cyan-400 bg-cyan-500/10"
+                style={{ borderColor: "rgba(6,182,212,0.25)" }}>
+                Prompt Excellence
+              </span>
+              <span className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.3)" }}>Training</span>
+            </div>
+            <p className="text-sm font-semibold leading-relaxed" style={{ color: "rgba(240,238,255,0.45)" }}>
+              Learn to write better prompts — two levels, real skills, built for HXers.
+            </p>
+          </div>
+
+          <span className="shrink-0 w-7 h-7 rounded-md border flex items-center justify-center text-sm text-cyan-400 transition-all group-hover:border-cyan-500"
+            style={{ borderColor: "rgba(255,255,255,0.1)" }}>→</span>
+        </Link>
       </div>
 
       <Footer />
