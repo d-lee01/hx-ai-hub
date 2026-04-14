@@ -34,9 +34,15 @@ export default function Home() {
           alt="HX AI Hub"
           width={1536}
           height={1024}
-          className="w-full h-auto"
+          className="w-full"
           priority
-          style={{ maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)" }}
+          style={{
+            height: "62vh",
+            objectFit: "cover",
+            objectPosition: "center 35%",
+            maskImage: "linear-gradient(to bottom, black 40%, transparent 90%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 40%, transparent 90%)",
+          }}
         />
       </div>
 
