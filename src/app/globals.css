@@ -2,22 +2,22 @@
 
 /* ── Design tokens ─────────────────────────────────────── */
 :root {
-  --background: #F9F8F6;
-  --foreground: #1A1A2E;
+  --background: #0A071A;
+  --foreground: #F0EEFF;
   --hx-purple: #542E91;
   --hx-purple-light: #7B52C1;
   --hx-purple-dark: #3D1F6D;
   --section-news: #3B82F6;
-  --section-athx: #542E91;
+  --section-athx: #8B5CF6;
   --section-tools: #10B981;
   --section-models: #F59E0B;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(84, 46, 145, 0.12);
-  --glass-shadow: rgba(84, 46, 145, 0.08);
-  --nav-blur-bg: rgba(249, 248, 246, 0.8);
-  --text-primary: rgba(26, 26, 46, 1);
-  --text-secondary: rgba(26, 26, 46, 0.7);
-  --text-tertiary: rgba(26, 26, 46, 0.5);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(139, 92, 246, 0.2);
+  --glass-shadow: rgba(139, 92, 246, 0.15);
+  --nav-blur-bg: rgba(10, 7, 26, 0.85);
+  --text-primary: rgba(240, 238, 255, 1);
+  --text-secondary: rgba(240, 238, 255, 0.65);
+  --text-tertiary: rgba(240, 238, 255, 0.45);
 }
 
 @theme inline {
@@ -41,7 +41,10 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(84, 46, 145, 0.3) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M60 0v60M0 60h60' stroke='rgba(139,92,246,0.05)' stroke-width='1'/%3E%3C/svg%3E");
   color: var(--foreground);
   font-family: var(--font-nunito), system-ui, sans-serif;
   min-height: 100dvh;
@@ -258,8 +261,8 @@ body {
   font-size: 0.875em;
 }
 .prose-hx pre {
-  background: var(--foreground);
-  color: #F9F8F6;
+  background: rgba(255, 255, 255, 0.06);
+  color: #F0EEFF;
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;

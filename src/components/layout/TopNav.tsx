@@ -21,7 +21,7 @@ export function TopNav() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 nav-blur" role="navigation">
         <div className="max-w-6xl mx-auto flex items-center justify-between h-16 px-4">
-          <Link href="/news" className="font-bold text-lg gradient-text shrink-0">
+          <Link href="/" className="font-bold text-lg gradient-text shrink-0">
             HX AI Hub
           </Link>
 
@@ -36,7 +36,7 @@ export function TopNav() {
                   className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                     active
                       ? "bg-hx-purple text-white"
-                      : "text-text-secondary hover:text-foreground hover:bg-black/5"
+                      : "text-text-secondary hover:text-foreground hover:bg-white/8"
                   }`}
                 >
                   {link.label}
