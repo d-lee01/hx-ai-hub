@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TopNav } from "@/components/layout/TopNav";
-import { Footer } from "@/components/layout/Footer";
 
 const level1Parts = [
   {
@@ -160,7 +159,6 @@ export default function TrainingPage() {
         </Link>
       </div>
 
-      <Footer />
     </div>
   );
 }
