@@ -7,34 +7,46 @@ const level1Parts = [
   {
     num: "Part 1",
     title: "What is AI & How to Prompt",
-    href: "https://drive.google.com/file/d/1KyW4XbmvBxCp5MSaib0401inndsBI3fH/view",
+    embedId: "1KyW4XbmvBxCp5MSaib0401inndsBI3fH",
     skills: ["What AI actually is", "Writing your first prompt", "Data security basics", "Summarise, transform & create"],
   },
   {
     num: "Part 2",
     title: "Clarity, Context & Conciseness",
-    href: "https://drive.google.com/file/d/1ju-nuph4K6gyEe41W3wxgPC2yUsG9K6j/view",
+    embedId: "1ju-nuph4K6gyEe41W3wxgPC2yUsG9K6j",
     skills: ["Being specific & unambiguous", "Adding background context", "Managing output length", "Keeping prompts focused"],
   },
   {
     num: "Part 3",
     title: "Tips for Better Results",
-    href: "https://drive.google.com/file/d/1ceLHvPTaVBHwyMnl7waiXr4bpQbzhd9V/view",
+    embedId: "1ceLHvPTaVBHwyMnl7waiXr4bpQbzhd9V",
     skills: ["Providing examples", "Referencing source material", "Breaking tasks into steps", "Iterative clarification"],
   },
 ];
 
 const level2 = {
   title: "Prompt Scholar",
-  href: "https://drive.google.com/file/d/1tHNUoljy-UqW47kGNMzKYwXkNIL67iIq/view",
+  embedId: "1tHNUoljy-UqW47kGNMzKYwXkNIL67iIq",
   skills: ["CO-STAR framework", "Chain-of-thought prompting", "Temperature & creativity", "Context & memory management"],
 };
+
+function VideoEmbed({ id, color }: { id: string; color: string }) {
+  return (
+    <div className="relative w-full rounded-lg overflow-hidden mt-4" style={{ paddingTop: "56.25%", border: `1px solid ${color}` }}>
+      <iframe
+        src={`https://drive.google.com/file/d/${id}/preview`}
+        className="absolute inset-0 w-full h-full"
+        allow="autoplay"
+        style={{ border: 0 }}
+      />
+    </div>
+  );
+}
 
 export default function TrainingPage() {
   return (
     <div className="min-h-dvh flex flex-col" style={{ background: "#0A071A" }}>
 
-      {/* Background */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div style={{
           position: "absolute", inset: 0,
@@ -76,7 +88,7 @@ export default function TrainingPage() {
 
         {/* Level 1 */}
         <div>
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-6">
             <span className="text-xs font-black tracking-wider" style={{ color: "rgba(255,255,255,0.2)" }}>01</span>
             <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border text-cyan-400 bg-cyan-500/10"
               style={{ borderColor: "rgba(6,182,212,0.25)" }}>Level 1</span>
@@ -84,34 +96,26 @@ export default function TrainingPage() {
             <span className="text-xs font-semibold ml-auto" style={{ color: "rgba(255,255,255,0.3)" }}>For beginners</span>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-8">
             {level1Parts.map((part, i) => (
-              <div key={i} className="group relative rounded-xl p-5 border border-cyan-500/20 overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
+              <div key={i} className="relative rounded-xl p-5 border border-cyan-500/20 overflow-hidden"
                 style={{ background: "rgba(255,255,255,0.02)" }}>
-                <div className="absolute top-0 left-[10%] right-[10%] h-px opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{ background: "linear-gradient(90deg, transparent, rgba(6,182,212,0.6), transparent)" }} />
+                <div className="absolute top-0 left-[10%] right-[10%] h-px"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(6,182,212,0.4), transparent)" }} />
 
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs font-black text-cyan-400/60 uppercase tracking-widest">{part.num}</span>
-                    </div>
-                    <h3 className="text-white font-black text-lg mb-3">{part.title}</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {part.skills.map((skill) => (
-                        <span key={skill} className="text-xs font-bold px-2.5 py-1 rounded-full"
-                          style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.45)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <Link href={part.href} target="_blank" rel="noopener noreferrer"
-                    className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-black text-sm text-cyan-400 transition-all hover:scale-105"
-                    style={{ background: "rgba(6,182,212,0.12)", border: "1px solid rgba(6,182,212,0.3)" }}>
-                    ▶ Watch
-                  </Link>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs font-black text-cyan-400/60 uppercase tracking-widest">{part.num}</span>
                 </div>
+                <h3 className="text-white font-black text-lg mb-3">{part.title}</h3>
+                <div className="flex flex-wrap gap-2 mb-1">
+                  {part.skills.map((skill) => (
+                    <span key={skill} className="text-xs font-bold px-2.5 py-1 rounded-full"
+                      style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.45)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+                <VideoEmbed id={part.embedId} color="rgba(6,182,212,0.2)" />
               </div>
             ))}
           </div>
@@ -122,7 +126,7 @@ export default function TrainingPage() {
 
         {/* Level 2 */}
         <div>
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-6">
             <span className="text-xs font-black tracking-wider" style={{ color: "rgba(255,255,255,0.2)" }}>02</span>
             <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border text-violet-400 bg-violet-500/10"
               style={{ borderColor: "rgba(139,92,246,0.25)" }}>Level 2</span>
@@ -130,35 +134,26 @@ export default function TrainingPage() {
             <span className="text-xs font-semibold ml-auto" style={{ color: "rgba(255,255,255,0.3)" }}>Ready to go deeper</span>
           </div>
 
-          <div className="group relative rounded-xl p-5 border border-violet-500/20 overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
+          <div className="relative rounded-xl p-5 border border-violet-500/20 overflow-hidden"
             style={{ background: "rgba(255,255,255,0.02)" }}>
-            <div className="absolute top-0 left-[10%] right-[10%] h-px opacity-0 group-hover:opacity-100 transition-opacity"
-              style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.6), transparent)" }} />
+            <div className="absolute top-0 left-[10%] right-[10%] h-px"
+              style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.4), transparent)" }} />
 
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
-                <h3 className="text-white font-black text-lg mb-3">{level2.title}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {level2.skills.map((skill) => (
-                    <span key={skill} className="text-xs font-bold px-2.5 py-1 rounded-full"
-                      style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.45)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <Link href={level2.href} target="_blank" rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-black text-sm text-violet-400 transition-all hover:scale-105"
-                style={{ background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.3)" }}>
-                ▶ Watch
-              </Link>
+            <h3 className="text-white font-black text-lg mb-3">{level2.title}</h3>
+            <div className="flex flex-wrap gap-2 mb-1">
+              {level2.skills.map((skill) => (
+                <span key={skill} className="text-xs font-bold px-2.5 py-1 rounded-full"
+                  style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.45)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  {skill}
+                </span>
+              ))}
             </div>
+            <VideoEmbed id={level2.embedId} color="rgba(139,92,246,0.2)" />
           </div>
         </div>
 
       </div>
 
-      {/* Back link */}
       <div className="relative z-10 text-center pb-8">
         <Link href="/" className="text-sm font-semibold transition-colors hover:text-white" style={{ color: "rgba(255,255,255,0.3)" }}>
           ← Back to HX AI Hub
