@@ -11,7 +11,13 @@ export default async function NewsPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-bold gradient-text-news mb-4 animate-fade-in-up">AI News</h1>
+      <div className="mb-6 animate-fade-in-up">
+        <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border inline-block mb-3"
+          style={{ background: "rgba(59,130,246,0.12)", color: "#93C5FD", borderColor: "rgba(59,130,246,0.25)" }}>
+          AI News
+        </span>
+        <h1 className="text-4xl font-black text-white leading-tight tracking-tight">AI News</h1>
+      </div>
 
       {pages.length === 0 ? (
         <div className="glass-panel p-8 text-center text-text-secondary animate-fade-in-up stagger-2">
