@@ -11,8 +11,8 @@ export default async function NewsPage() {
 
   return (
     <>
-      <h1 className="text-4xl font-black uppercase tracking-widest px-4 py-2 rounded border inline-block mb-6 animate-fade-in-up"
-        style={{ background: "rgba(59,130,246,0.12)", color: "#93C5FD", borderColor: "rgba(59,130,246,0.25)", border: "1px solid rgba(59,130,246,0.25)" }}>
+      <h1 className="text-4xl font-black uppercase tracking-widest px-4 py-2 rounded inline-block mb-6 animate-fade-in-up"
+        style={{ background: "rgba(59,130,246,0.12)", color: "#93C5FD", border: "1px solid rgba(59,130,246,0.25)" }}>
         AI News
       </h1>
 

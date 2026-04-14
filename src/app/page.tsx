@@ -28,15 +28,15 @@ export default function Home() {
       <TopNav />
 
       {/* Hero image */}
-      <div className="relative z-10 pt-16 overflow-hidden" style={{ maxHeight: "68vh" }}>
+      <div className="relative z-10 pt-16">
         <Image
           src="/hassle-away-hero.png"
           alt="HX AI Hub"
           width={1536}
           height={1024}
-          className="w-full h-auto object-cover"
+          className="w-full h-auto"
           priority
-          style={{ objectPosition: "center 40%", maskImage: "linear-gradient(to bottom, black 55%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 55%, transparent 100%)" }}
+          style={{ maskImage: "linear-gradient(to bottom, black 60%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, black 60%, transparent 100%)" }}
         />
       </div>
 

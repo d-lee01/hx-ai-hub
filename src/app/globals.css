@@ -200,12 +200,14 @@ body {
 }
 
 .capability-pill--inactive {
-  background: rgba(84, 46, 145, 0.08);
-  color: var(--hx-purple);
+  background: rgba(139, 92, 246, 0.12);
+  color: #C4B5FD;
+  border: 1px solid rgba(139, 92, 246, 0.25);
 }
 
 .capability-pill--inactive:hover {
-  background: rgba(84, 46, 145, 0.15);
+  background: rgba(139, 92, 246, 0.22);
+  color: #DDD6FE;
 }
 
 /* ── Section badge ─────────────────────────────────────── */
