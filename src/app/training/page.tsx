@@ -3,44 +3,38 @@ import Link from "next/link";
 import { TopNav } from "@/components/layout/TopNav";
 import { Footer } from "@/components/layout/Footer";
 
-const levels = [
+const level1Parts = [
   {
-    num: "01",
-    title: "Building Strong Foundations",
-    subtitle: "Level 1",
-    audience: "Perfect for beginners",
-    desc: "Start your AI journey here. Learn the fundamentals of prompt writing — how to talk to AI tools clearly, get better results, and build habits that save you time every day.",
-    skills: ["Writing clear instructions", "Giving context", "Iterating on outputs", "Basic prompt structures"],
-    videoLabel: "Watch Level 1",
-    videoHref: "#", // Replace with Google Sites URL
-    color: "cyan",
-    textColor: "text-cyan-400",
-    borderColor: "border-cyan-500/25",
-    badgeBg: "bg-cyan-500/10",
-    glowColor: "rgba(6,182,212,0.6)",
+    num: "Part 1",
+    title: "What is AI & How to Prompt",
+    href: "https://drive.google.com/file/d/1KyW4XbmvBxCp5MSaib0401inndsBI3fH/view",
+    skills: ["What AI actually is", "Writing your first prompt", "Data security basics", "Summarise, transform & create"],
   },
   {
-    num: "02",
-    title: "Prompt Scholar",
-    subtitle: "Level 2",
-    audience: "Ready to go deeper",
-    desc: "Take your skills to the next level. Explore advanced techniques — chain-of-thought prompting, personas, few-shot examples, and how to get consistently great results across different tools.",
-    skills: ["Chain-of-thought prompting", "Persona & role prompts", "Few-shot examples", "Cross-tool techniques"],
-    videoLabel: "Watch Level 2",
-    videoHref: "#", // Replace with Google Sites URL
-    color: "violet",
-    textColor: "text-violet-400",
-    borderColor: "border-violet-500/25",
-    badgeBg: "bg-violet-500/10",
-    glowColor: "rgba(139,92,246,0.6)",
+    num: "Part 2",
+    title: "Clarity, Context & Conciseness",
+    href: "https://drive.google.com/file/d/1ju-nuph4K6gyEe41W3wxgPC2yUsG9K6j/view",
+    skills: ["Being specific & unambiguous", "Adding background context", "Managing output length", "Keeping prompts focused"],
+  },
+  {
+    num: "Part 3",
+    title: "Tips for Better Results",
+    href: "https://drive.google.com/file/d/1ceLHvPTaVBHwyMnl7waiXr4bpQbzhd9V/view",
+    skills: ["Providing examples", "Referencing source material", "Breaking tasks into steps", "Iterative clarification"],
   },
 ];
+
+const level2 = {
+  title: "Prompt Scholar",
+  href: "https://drive.google.com/file/d/1tHNUoljy-UqW47kGNMzKYwXkNIL67iIq/view",
+  skills: ["CO-STAR framework", "Chain-of-thought prompting", "Temperature & creativity", "Context & memory management"],
+};
 
 export default function TrainingPage() {
   return (
     <div className="min-h-dvh flex flex-col" style={{ background: "#0A071A" }}>
 
-      {/* Background grid + glow */}
+      {/* Background */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div style={{
           position: "absolute", inset: 0,
@@ -52,26 +46,14 @@ export default function TrainingPage() {
 
       {/* Hero */}
       <div className="relative z-10 pt-28 pb-6 px-4 text-center">
-
-        {/* Prompty */}
         <div className="flex justify-center mb-2">
-          <Image
-            src="/promty.png"
-            alt="Prompty"
-            width={240}
-            height={240}
-            className="w-48 h-48 object-contain"
-            style={{ mixBlendMode: "screen" }}
-            priority
-          />
+          <Image src="/promty.png" alt="Prompty" width={240} height={240}
+            className="w-44 h-44 object-contain" style={{ mixBlendMode: "screen" }} priority />
         </div>
-
-        {/* Badge */}
         <div className="inline-block text-xs font-black tracking-[0.18em] uppercase px-4 py-1.5 rounded mb-5"
           style={{ color: "#22D3EE", border: "1px solid rgba(6,182,212,0.4)", background: "rgba(6,182,212,0.1)" }}>
           Holiday Extras · AI Training
         </div>
-
         <h1 className="font-black leading-none tracking-tight mb-4"
           style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", letterSpacing: "-2px" }}>
           <span style={{ background: "linear-gradient(160deg, #ffffff 0%, #a5f3fc 50%, #22D3EE 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -80,7 +62,6 @@ export default function TrainingPage() {
           <br />
           <span style={{ color: "#A78BFA" }}>Excellence.</span>
         </h1>
-
         <p className="text-lg font-semibold max-w-lg mx-auto" style={{ color: "rgba(240,238,255,0.45)" }}>
           Learn to get the best out of AI — two levels, real skills, built for HXers.
         </p>
@@ -91,66 +72,90 @@ export default function TrainingPage() {
         <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(6,182,212,0.4), rgba(139,92,246,0.4), transparent)" }} />
       </div>
 
-      {/* Level cards */}
-      <div className="relative z-10 max-w-3xl mx-auto w-full px-4 pb-16">
-        <p className="text-center text-xs font-black tracking-[0.2em] uppercase mb-8" style={{ color: "#22D3EE" }}>
-          Choose your level
-        </p>
+      <div className="relative z-10 max-w-3xl mx-auto w-full px-4 pb-16 flex flex-col gap-10">
 
-        <div className="flex flex-col gap-5">
-          {levels.map((level) => (
-            <div
-              key={level.num}
-              className={`group relative rounded-xl p-6 border overflow-hidden ${level.borderColor}`}
-              style={{ background: "rgba(255,255,255,0.02)" }}
-            >
-              {/* Top glow line */}
-              <div className="absolute top-0 left-[10%] right-[10%] h-px"
-                style={{ background: `linear-gradient(90deg, transparent, ${level.glowColor}, transparent)` }} />
+        {/* Level 1 */}
+        <div>
+          <div className="flex items-center gap-3 mb-5">
+            <span className="text-xs font-black tracking-wider" style={{ color: "rgba(255,255,255,0.2)" }}>01</span>
+            <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border text-cyan-400 bg-cyan-500/10"
+              style={{ borderColor: "rgba(6,182,212,0.25)" }}>Level 1</span>
+            <span className="text-sm font-black text-white">Building Strong Foundations</span>
+            <span className="text-xs font-semibold ml-auto" style={{ color: "rgba(255,255,255,0.3)" }}>For beginners</span>
+          </div>
 
-              <div className="flex flex-col md:flex-row md:items-start gap-5">
+          <div className="flex flex-col gap-4">
+            {level1Parts.map((part, i) => (
+              <div key={i} className="group relative rounded-xl p-5 border border-cyan-500/20 overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
+                style={{ background: "rgba(255,255,255,0.02)" }}>
+                <div className="absolute top-0 left-[10%] right-[10%] h-px opacity-0 group-hover:opacity-100 transition-opacity"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(6,182,212,0.6), transparent)" }} />
 
-                {/* Left: content */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="text-xs font-black tracking-wider" style={{ color: "rgba(255,255,255,0.2)" }}>{level.num}</span>
-                    <span className={`text-xs font-black uppercase tracking-widest px-3 py-1 rounded border ${level.badgeBg} ${level.textColor}`}
-                      style={{ borderColor: level.glowColor.replace("0.6", "0.25") }}>
-                      {level.subtitle}
-                    </span>
-                    <span className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.3)" }}>{level.audience}</span>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs font-black text-cyan-400/60 uppercase tracking-widest">{part.num}</span>
+                    </div>
+                    <h3 className="text-white font-black text-lg mb-3">{part.title}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {part.skills.map((skill) => (
+                        <span key={skill} className="text-xs font-bold px-2.5 py-1 rounded-full"
+                          style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.45)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-
-                  <h2 className="text-white font-black text-2xl leading-tight tracking-tight mb-3">{level.title}</h2>
-                  <p className="text-sm font-semibold leading-relaxed mb-4" style={{ color: "rgba(240,238,255,0.45)" }}>{level.desc}</p>
-
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2">
-                    {level.skills.map((skill) => (
-                      <span key={skill} className="text-xs font-bold px-3 py-1 rounded-full"
-                        style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.5)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right: CTA */}
-                <div className="flex md:flex-col items-center justify-center md:justify-start gap-3 md:pt-8 shrink-0">
-                  <Link
-                    href={level.videoHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-5 py-3 rounded-lg font-black text-sm transition-all hover:scale-105 ${level.textColor}`}
-                    style={{ background: level.glowColor.replace("0.6", "0.15"), border: `1px solid ${level.glowColor.replace("0.6", "0.35")}` }}
-                  >
-                    ▶ {level.videoLabel}
+                  <Link href={part.href} target="_blank" rel="noopener noreferrer"
+                    className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-black text-sm text-cyan-400 transition-all hover:scale-105"
+                    style={{ background: "rgba(6,182,212,0.12)", border: "1px solid rgba(6,182,212,0.3)" }}>
+                    ▶ Watch
                   </Link>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {/* Divider */}
+        <div style={{ height: "1px", background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), transparent)" }} />
+
+        {/* Level 2 */}
+        <div>
+          <div className="flex items-center gap-3 mb-5">
+            <span className="text-xs font-black tracking-wider" style={{ color: "rgba(255,255,255,0.2)" }}>02</span>
+            <span className="text-xs font-black uppercase tracking-widest px-3 py-1 rounded border text-violet-400 bg-violet-500/10"
+              style={{ borderColor: "rgba(139,92,246,0.25)" }}>Level 2</span>
+            <span className="text-sm font-black text-white">Prompt Scholar</span>
+            <span className="text-xs font-semibold ml-auto" style={{ color: "rgba(255,255,255,0.3)" }}>Ready to go deeper</span>
+          </div>
+
+          <div className="group relative rounded-xl p-5 border border-violet-500/20 overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
+            style={{ background: "rgba(255,255,255,0.02)" }}>
+            <div className="absolute top-0 left-[10%] right-[10%] h-px opacity-0 group-hover:opacity-100 transition-opacity"
+              style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.6), transparent)" }} />
+
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <h3 className="text-white font-black text-lg mb-3">{level2.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {level2.skills.map((skill) => (
+                    <span key={skill} className="text-xs font-bold px-2.5 py-1 rounded-full"
+                      style={{ background: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.45)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <Link href={level2.href} target="_blank" rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-black text-sm text-violet-400 transition-all hover:scale-105"
+                style={{ background: "rgba(139,92,246,0.12)", border: "1px solid rgba(139,92,246,0.3)" }}>
+                ▶ Watch
+              </Link>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       {/* Back link */}
